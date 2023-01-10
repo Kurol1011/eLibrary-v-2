@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+	<title>eLibrary</title>
+</head>
+<body>
+<h1>Редактирование информации о книге</h1>
+<form th:method="PATCH" th:action="@{/books/{id}/edit(id=${book.getId()})}" th:object="${book}">
+<label for="title">Название книги:</label>
+		<input type="text" th:field="*{title}" id="title"/>
+		<div style="color:red;" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Введите корректное название книги</div>
+	<br/>
+	<label for="author">Имя автора:</label>
+		<input type="text" th:field="*{author}" id="author"/>
+		<div style="color:red;" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Введите корректное имя автора</div>
+	<br/>
+	<label for="year">Год выпуска:</label>
+		<input type="text" th:field="*{year}" id="year"/>
+		<div style="color:red;" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Введите корректный год выпуска книги</div>
+	<br/>
+	<input type="submit" value="Редактировать!">
+	<br/>
+</form>
+<form th:method="DELETE" th:action="@{/books/{id}/edit(id=${book.getId()})}" th:object="${book}">
+<input type="submit" value="Удалить книгу из базы!">
+</form>
+<div class="linkBlock" style="width:70px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+<a class="link_address" th:href="@{/books/}" style="text-decoration:none">назад</a>
+</div>
+</body>
+</html>

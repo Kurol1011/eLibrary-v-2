@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+	<title>myMvcWebApp</title>
+</head>
+<body>
+<h1>Информация о читателе</h1>
+<table border="1">
+<tr>
+<td>ФИО:</td>
+<td th:text="${person.getFullName()}"></td>
+</tr>
+<tr>
+<td>Год рождения:</td>
+<td th:text="${person.getDateOfBirth()}"></td>
+</tr>
+</table>
+
+<div th:if="${personBooks.size()}">
+<hr/>
+<p style="font-weight:bold;">Книги:</p>
+<div th:each="book:${personBooks}">
+	<span id="${book.getId()}" th:text="${book.getTitle()}" th:style="${book.isExpired()?'color:red':'color:false'}"> </span>
+	<br/>
+</div>
+</div>
+<div th:unless="${personBooks.size()}">
+	<p>Читатель пока не взял ни одной книги</p>
+</div>
+<hr/>
+<div class="linkBlock" style="width:70px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+<a class="link_address" th:href="@{/people/{id}/edit(id=${person.getId()})}" style="text-decoration:none;color:black;">Редактировать</a>
+</div>
+<div class="linkBlock" style="width:70px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+<a class="link_address" th:href="@{/people}" style="text-decoration:none;color:black;">Назад</a>
+</div>
+</body>
+</html>

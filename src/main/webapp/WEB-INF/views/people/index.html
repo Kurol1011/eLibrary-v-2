@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+	<title>eLibrary</title>
+</head>
+<body>
+<h1>Список читателей</h1>
+
+	<div th:each="person:${people}">
+		<a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFullName()}">person name</a>
+	</div>
+<div class="linkBlock" style="width:120px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+		<a class="link_address" th:href="@{/people/new}" >Добавить читателя</a>
+	</div>
+	<br/>
+	<div class="linkBlock" style="width:120px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+		<a class="link_address" th:href="@{/books}" >Перейти на страницу книг</a>
+	</div>
+</body>
+</html>
+

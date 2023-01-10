@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+	<title>eLibrary</title>
+</head>
+<body>
+<h1>Информация о книге</h1>
+<span th:text="${book.getTitle()}"></span>,
+<span th:text="${book.getAuthor()}"></span>,
+<span th:text="${book.getYear()}"></span>
+
+<div th:if = "${book.getOwner}">
+	<p>Книга сейчас у <span th:text="${personWithBook.getFullName()}"></span></p>
+	<form th:method="POST" th:action="@{/books/{id}(id=${book.getId()}) }" >
+		<input type="submit" value="Освободить книгу"/>
+	</form>
+</div>
+
+<div th:unless = "${book.getOwner}">
+<p>Эта книга свободна</p>
+<form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" >
+
+	<label for="person">Выберите человека:</label>
+	<select th:object="${person}" th:field="*{id}" id="person">
+	<option th:each="person:${people}" th:value="${person.getId()}" th:text="${person.getFullName()}"></option>
+	</select>
+<input type="submit" value="Назначить книгу"/>
+</form>
+</div>
+
+<div class="linkBlock" style="width:70px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+<a class="link_address" th:href="@{/books/{id}/edit(id=${book.getId()})}" style="text-decoration:none;color:black;">Редактировать</a>
+</div>
+<div class="linkBlock" style="width:70px;height:40px; border:solid silver 1px;margin-top:20px;text-align:center;">
+<a class="link_address" th:href="@{/books}" style="text-decoration:none;color:black;">Назад</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+kz\project1\eLibrary\models\Book.class
+kz\project1\eLibrary\util\PersonValidator.class
+kz\project1\eLibrary\controllers\PeopleController.class
+kz\project1\eLibrary\services\PeopleService.class
+kz\project1\eLibrary\config\MySpringMvcDispatcherServletInitializer.class
+kz\project1\repositories\PeopleRepository.class
+kz\project1\eLibrary\controllers\BookController.class
+kz\project1\eLibrary\util\BookValidator.class
+kz\project1\eLibrary\services\BooksService.class
+kz\project1\repositories\BooksRepository.class
+kz\project1\eLibrary\models\Person.class
+kz\project1\eLibrary\config\SpringConfig.class
